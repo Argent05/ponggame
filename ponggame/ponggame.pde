@@ -10,6 +10,12 @@ float leftx, lefty, leftd, rightx,righty, rightd; // paddles
 float ballx, bally, balld; //ball
 float vx, vy;
 
+//scorign
+
+int leftscore, rightscore, timer;
+
+//ball color
+int ballcolor;
 
 //extra
 float countertext = 1;
@@ -25,10 +31,10 @@ boolean wkey,skey,upkey,downkey;
 
 void setup() {
   size(800, 800);
-  mode = GAME;
+  mode = INTRO;
   textAlign(CENTER, CENTER);
  
-  
+  ballcolor = yellow;
   thefont = createFont("walkthemoon.ttf", 128);
   textFont(thefont);
   //initalize paddles
