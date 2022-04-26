@@ -1,4 +1,5 @@
 void game() {
+  theme.play();
   background(0);
   ////paddles
   fill(green);
@@ -8,9 +9,27 @@ void game() {
   //move paddles
   if (wkey == true) lefty = lefty -5;
   if (skey == true) lefty = lefty +5;
+ 
+ if( AI == false) { 
   if (upkey == true) righty = righty -5;
   if (downkey == true) righty = righty +5;
-  
+ } else {
+   if (ballx> 400){
+    if (bally> righty){
+     righty = righty+5; 
+    }
+   if (bally<righty){
+    righty = righty-6; 
+     
+   }
+     
+     
+     
+     
+   }
+   
+ }
+ 
 //center line 
 strokeWeight(5);
 stroke(255);
@@ -36,6 +55,8 @@ timer = timer -1;
    bally = height/2;
    timer = 20;
    ballcolor = green;
+   goal.play();
+   goal.rewind();
  }
 
 if (ballx > 800){
@@ -44,7 +65,8 @@ if (ballx > 800){
  bally = height/2;
  timer =20;
  ballcolor = red;
- 
+ goal.play();
+ goal.rewind();
   
 } 
   //ball
@@ -71,6 +93,8 @@ if (ballx > 800){
     if (dist(leftx,lefty,ballx,bally)<150){
       vx= (ballx-leftx)/10;
       vy = (bally - lefty)/10; 
+      bump.play();
+      bump.rewind();
     }
     
     
@@ -87,6 +111,8 @@ if (lefty < leftd/2) {
      if (dist(rightx,righty,ballx,bally)<150){
       vx= (ballx-rightx)/10;
       vy = (bally - righty)/10; 
+      bump.play();
+      bump.rewind();
     }
     
     
@@ -104,8 +130,10 @@ if (righty < rightd/2) {
   // vy = vy * -1; 
   //}
 
-  if (leftscore >2 || rightscore > 3){
+  if (leftscore >3 || rightscore > 3){
     mode = GAMEOVER;
+    theme.pause();
+    
   }
   
   
@@ -113,5 +141,7 @@ if (righty < rightd/2) {
 }
 
 void gameClicks() {
+  theme.pause();
+  theme.rewind();
   mode = PAUSE;
 }

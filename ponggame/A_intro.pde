@@ -1,4 +1,5 @@
 void intro() {
+ 
   background(red);
   strokeWeight(7);
   fill(white);
@@ -8,6 +9,7 @@ void intro() {
   textSize(30);
   text("1 player", width/4, 550);
   fill(white);
+tactile(500,500,200,100);
   rect(500, 500, 200, 100);
   fill(black);
   text("2 player", 600, 550);
@@ -38,5 +40,13 @@ void intro() {
 void introClicks() {
   if (mouseX > 100 && mouseX < 300 && mouseY > 500 && mouseY < 600) {
     mode = GAME;
+    AI = false;
+    intro.pause();
+  }
+  
+  if(mouseX> 500 && mouseX < 700 && mouseY> 500 && mouseY < 600){
+   mode = GAME;
+   AI = true;
+   intro.pause();
   }
 }
